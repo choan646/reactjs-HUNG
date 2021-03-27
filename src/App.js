@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import Baitap1 from "./Baitap1";
+import DataBindingClass from "./DataBinding/DataBindingClass";
+import DataBindingFunction from "./DataBinding/DataBindingFunction";
+import EventClass from "./HandleEvent";
+import ConditionClass from "./Condition";
+import ListsClass from "./Lists";
+import StateClass from "./State";
+import Baitap2 from "./Baitap2";
+import Baitap3 from "./Baitap3";
+import Parent from "./Props/Parent";
+import Baitap4 from "./Baitap4";
+import Lifecycles from "./Lifecycles";
+import UserManagement from "./UserManagement";
 
+//JSX -Javascript XML : Kết hợp javascript với HTML lại với nhau
+
+//Component app
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <Baitap1 />
+    // <DataBindingClass/>
+    // <DataBindingFunction/>
+    // <EventClass/>
+    // <ConditionClass/>
+    // <ListsClass/>
+    // <StateClass/>
+    // <Baitap2 />
+    // <Baitap3 />
+    // <Parent />
+    // <Baitap4 />
+    // <Lifecycles />
+    <UserManagement/>
   );
 }
 
