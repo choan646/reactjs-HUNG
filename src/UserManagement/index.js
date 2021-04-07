@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Button } from "reactstrap";
+
 import UserList from "./UserList";
 import UserForm from "./UserForm";
 
@@ -10,6 +12,7 @@ export default class UserManagement extends Component {
     this.state = {
       users: [],
       selectedUser: {},
+      isOpen: false, //Bat Tat Modal userform
     };
   }
 
@@ -51,6 +54,7 @@ export default class UserManagement extends Component {
       });
 
       this.fetchUser();
+      this.handleToggleModal(); //Tat modal sau khi thêm thành công thành công
     } catch (error) {
       console.log(error);
     }
@@ -72,38 +76,48 @@ export default class UserManagement extends Component {
   };
 
   handleUpdateUser = async (user) => {
-      const {id,...data} = user;
-      try {
-          await axios({
-            method: "PUT",
-            url: `https://6056f9c1055dbd0017e844c9.mockapi.io/api/users/${id}`,
-            data,
-          })
-          this.fetchUser();
-      } catch (error) {
-          console.log(error);
-      }
-  }
+    const { id, ...data } = user;
+    try {
+      await axios({
+        method: "PUT",
+        url: `https://6056f9c1055dbd0017e844c9.mockapi.io/api/users/${id}`,
+        data,
+      });
+      this.fetchUser();
+      this.handleToggleModal(); //Tat modal sau khi cập nhật thành công
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  handleToggleModal = () => {
+    this.setState((state) => ({
+      isOpen: !state.isOpen,
+    }));
+  };
 
   render() {
     return (
       <div className="container">
         <h1 className="text-center">User Management</h1>
         <div className="text-right my-4">
-          <button
-            data-toggle="modal"
-            data-target="#modelId"
-            className="btn btn-primary"
-          >
+          <Button color="primary" onClick={this.handleToggleModal}>
             Add User
-          </button>
+          </Button>
         </div>
         <UserList
           users={this.state.users}
           onDelete={this.handleDelete}
           onGetUser={this.handleGetUser}
         />
-        <UserForm user={this.state.selectedUser} onAddUser={this.handleAddUser} onUpdateUser={this.handleUpdateUser}/>
+
+        <UserForm
+          user={this.state.selectedUser}
+          isOpen={this.state.isOpen}
+          onToggle={this.handleToggleModal}
+          onAddUser={this.handleAddUser}
+          onUpdateUser={this.handleUpdateUser}
+        />
       </div>
     );
   }

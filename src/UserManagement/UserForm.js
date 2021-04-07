@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  FormGroup,
+  Label,
+  Input,
+} from "reactstrap";
 export default class UserForm extends Component {
   constructor(props) {
     super(props);
@@ -65,104 +74,80 @@ export default class UserForm extends Component {
     return (
       <>
         {/* Modal */}
-        <div
-          className="modal fade"
-          id="modelId"
-          tabIndex={-1}
-          role="dialog"
-          aria-labelledby="modelTitleId"
-          aria-hidden="true"
+        <Modal
+          isOpen={this.props.isOpen}
+          toggle={this.props.onToggle}
+          size="lg"
         >
-          <div className="modal-dialog modal-lg" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">User Form</h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <div className="form-group">
-                  <label htmlFor="username">Username</label>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={this.state.values.username}
-                    onChange={this.handleChange}
-                    className="form-control"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="text"
-                    id="email"
-                    name="email"
-                    value={this.state.values.email}
-                    onChange={this.handleChange}
-                    className="form-control"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="phone">Phone</label>
-                  <input
-                    type="text"
-                    id="phone"
-                    name="phone"
-                    value={this.state.values.phone}
-                    onChange={this.handleChange}
-                    className="form-control"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="fullName">Full Name</label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
-                    value={this.state.values.fullName}
-                    onChange={this.handleChange}
-                    className="form-control"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="address">Address</label>
-                  <input
-                    type="text"
-                    id="address"
-                    name="address"
-                    value={this.state.values.address}
-                    onChange={this.handleChange}
-                    className="form-control"
-                  />
-                </div>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-danger"
-                  data-dismiss="modal"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-success"
-                  data-dismiss="modal"
-                  onClick={this.handleSubmit}
-                >
-                  Submit
-                </button>
-              </div>
+          <ModalHeader>User Form</ModalHeader>
+          <ModalBody>
+            <FormGroup>
+              <Label for="username">Username</Label>
+              <Input
+                type="text"
+                id="username"
+                name="username"
+                value={this.state.values.username}
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+
+            {/* Sửa tiếp các phần gr còn lại */}
+            
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                value={this.state.values.email}
+                onChange={this.handleChange}
+                className="form-control"
+              />
             </div>
-          </div>
-        </div>
+            <div className="form-group">
+              <label htmlFor="phone">Phone</label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                value={this.state.values.phone}
+                onChange={this.handleChange}
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="fullName">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                value={this.state.values.fullName}
+                onChange={this.handleChange}
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="address">Address</label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                value={this.state.values.address}
+                onChange={this.handleChange}
+                className="form-control"
+              />
+            </div>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="danger" onClick={this.props.onToggle}>
+              Cancel
+            </Button>
+            <Button color="success" onClick={this.handleSubmit}>
+              Submit
+            </Button>
+          </ModalFooter>
+        </Modal>
       </>
     );
   }
