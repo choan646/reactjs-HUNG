@@ -1,18 +1,27 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Table } from "reactstrap";
-import {upAmount, downAmount} from "../redux/actions/burgerAction"
+import { upAmount, downAmount } from "../redux/actions/burgerAction";
 
 export default function Burger() {
   const dispatch = useDispatch();
   const { burger, total } = useSelector((state) => state.burger);
 
- const handleDownAmount=(id) =>{     
-    dispatch(downAmount(id))
- }
- const handleUpAmount=(id) =>{     
-    dispatch(upAmount(id))
-}
+  const renderBreadmid = () => {
+    Object.entries(burger).map((array) => {
+      array.map((item) => {
+        const arrayNew = Object.entries(item);
+        console.log(arrayNew);
+      });
+    });
+  };
+
+  const handleDownAmount = (id) => {
+    dispatch(downAmount(id));
+  };
+  const handleUpAmount = (id) => {
+    dispatch(upAmount(id));
+  };
   return (
     <div className="container mt-5 text-center ">
       <h1 className="text-danger">BÀI TẬP BURGER</h1>
@@ -20,6 +29,7 @@ export default function Burger() {
         <div className="col-sm-6 mr-2">
           <h3 className="text-warning">Bánh Burger Của Bạn</h3>
           <div className="breadTop mt-5"></div>
+          {renderBreadmid()}
           {/* {burger.map((burger) => (
             <div className={burger.name}></div>
             //nếu số lượng là 2 trở lên thì chưa render ra được
@@ -43,11 +53,20 @@ export default function Burger() {
                   <tr key={burger.id}>
                     <td>{burger.name}</td>
                     <td>
-                      <Button color="danger" className="mr-2" disabled={!burger.amount} onClick={()=>handleDownAmount(burger.id)}>
+                      <Button
+                        color="danger"
+                        className="mr-2"
+                        disabled={!burger.amount}
+                        onClick={() => handleDownAmount(burger.id)}
+                      >
                         -
                       </Button>
                       {burger.amount}
-                      <Button color="success" className="ml-2" onClick={()=>handleUpAmount(burger.id)}>
+                      <Button
+                        color="success"
+                        className="ml-2"
+                        onClick={() => handleUpAmount(burger.id)}
+                      >
                         +
                       </Button>
                     </td>

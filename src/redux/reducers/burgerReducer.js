@@ -10,7 +10,6 @@ const burgerState = {
 };
 
 function burgerRuducer(state = burgerState, action) {
-  
   switch (action.type) {
     case UP_AMOUNT: {
       const { id } = action.payload;

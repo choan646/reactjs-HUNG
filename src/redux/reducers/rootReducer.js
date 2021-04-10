@@ -6,7 +6,7 @@ import countReducer from "./countReducer";
 import colorReducer from "./colorReducer";
 import todosReducer from "./todosReducer";
 import coursesReducer from "./coursesReducer";
-// import burgerReducer from "./burgerReducer";
+import burgerReducer from "./burgerReducer";
 import {BugerReducer} from "../reducers/BugerReducer";
 
 const rootRuducer = combineReducers({
@@ -15,7 +15,7 @@ const rootRuducer = combineReducers({
   color: colorReducer,
   todos: todosReducer,
   courses: coursesReducer,
-  // burger: burgerReducer,
+  burger: burgerReducer,
   buger: BugerReducer,
 });
 export default rootRuducer;

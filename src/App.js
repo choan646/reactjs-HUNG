@@ -17,8 +17,8 @@
 // import DemoHook from "./hooks/DemoHook";
 // import Lifecycle from "./hooks/Lifecycle";
 // import DemoRedux from "./DemoRedux";
-import BaiTapBurger from "./BaiTapBurger";
-// import Burger from "./Burger/index";
+// import BaiTapBurger from "./BaiTapBurger";
+import Burger from "./Burger/index";
 // import QuanLyKhoaHoc from "./QuanLyKhoaHoc";
 // import TodoList from "./TodoListRedux/index";
 
@@ -47,8 +47,8 @@ function App() {
     // <DemoRedux/>
     // <TodoList/>
     // <QuanLyKhoaHoc/>
-    // <Burger/>
-    <BaiTapBurger/>
+    <Burger/>
+    // <BaiTapBurger/>
   );
 }
 
